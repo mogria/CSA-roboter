@@ -33,10 +33,11 @@
             // 
             // consoleView1
             // 
+            this.consoleView1.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.consoleView1.Location = new System.Drawing.Point(0, 0);
             this.consoleView1.Name = "consoleView1";
             this.consoleView1.RobotConsole = null;
-            this.consoleView1.Size = new System.Drawing.Size(120, 40);
+            this.consoleView1.Size = new System.Drawing.Size(160, 40);
             this.consoleView1.TabIndex = 1;
             // 
             // Form1
