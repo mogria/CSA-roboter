@@ -28,13 +28,22 @@ namespace RobotCtrl
         protected const float SAMPLE_PERIOD = 256E-6f;
         protected const float SPEED_SCALE = SAMPLE_PERIOD / Constants.MeterPerTick * (1 << 16);
         protected const float ACCELERATION_SCALE = SAMPLE_PERIOD * SAMPLE_PERIOD / Constants.MeterPerTick * (1 << 16);
-
+     
 
         private float nominalSpeed;		// aktuell eingestellte Geschwindigkeit [m/s]
         private float acceleration;     // Beschleunigung [m/s^2]
 
         private int ioAddress;
         private static object syncObj = new object();
+
+        // For calculating distance
+        private const float PI = 3.14159265359f;                // Math Pi
+        private const float DIAMETER = 0.076f;                  // Diameter of Wheel
+        private const float CIRCUMFERENCE = (float)(PI * DIAMETER);      // circumference of wheel. 
+        private const int MAXTICK = 28672;                     // Amount of Ticks counted by one full turn of the wheel
+
+
+
         #endregion
 
 
@@ -158,7 +167,12 @@ namespace RobotCtrl
         /// </summary>
         public virtual float Distance
         {
-            get { throw new NotImplementedException("ToDo"); }
+            get
+            {
+                // throw new NotImplementedException("ToDo");
+                int ticks = Ticks;                              // Gets the momentary amount of ticks
+                return (float)(CIRCUMFERENCE / MAXTICK) * ticks;      // Calculates ticks into Distance (m)
+            }
         }
 
 
