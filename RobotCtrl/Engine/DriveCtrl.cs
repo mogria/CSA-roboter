@@ -20,9 +20,8 @@ namespace RobotCtrl
         private int ioAddress;
         #endregion
 
-
-        private const byte POWER_LEFT_MASK = 0x01;
-        private const byte POWER_RIGHT_MASK = 0x02;
+        private const byte POWER_RIGHT_MASK = 0x01;
+        private const byte POWER_LEFT_MASK = 0x02;
         private const byte POWER_BOTH_MASK = POWER_LEFT_MASK | POWER_RIGHT_MASK;
         private const byte RESET_MASK = 0x80;
 

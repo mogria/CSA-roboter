@@ -12,17 +12,18 @@ namespace DeviceApplication1
 {
     public partial class Form1 : Form
     {
-
-        private MotorCtrl motorCtrlLeft = new MotorCtrl(0xF328);
-        private MotorCtrl motorCtrlRight = new MotorCtrl(0xF320);
-        private DriveCtrl driveCtrl = new DriveCtrl(0xF330);
+        
         public Form1()
         {
             InitializeComponent();
 
+
+            DriveCtrl driveCtrl = new DriveCtrl(0xF330);
+            driveCtrlView.DriveCtrl = driveCtrl;
+            MotorCtrl motorCtrlLeft = new MotorCtrl(0xF328);
+            MotorCtrl motorCtrlRight = new MotorCtrl(0xF320);
             motorCtrlView1.MotorCtrl = motorCtrlLeft;
             motorCtrlView2.MotorCtrl = motorCtrlRight;
-            driveCtrlView.DriveCtrl = driveCtrl;
         }
         
     }

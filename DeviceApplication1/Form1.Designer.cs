@@ -37,16 +37,16 @@
             // 
             // driveCtrlView
             // 
+            this.driveCtrlView.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.driveCtrlView.DriveCtrl = null;
-            this.driveCtrlView.Location = new System.Drawing.Point(0, 0);
+            this.driveCtrlView.Location = new System.Drawing.Point(266, 0);
             this.driveCtrlView.Name = "driveCtrlView";
             this.driveCtrlView.Size = new System.Drawing.Size(274, 57);
             this.driveCtrlView.TabIndex = 1;
-            this.driveCtrlView.Click += new System.EventHandler(this.driveCtrlView_Click);
             // 
             // motorCtrlView1
             // 
-            this.motorCtrlView1.Location = new System.Drawing.Point(3, 63);
+            this.motorCtrlView1.Location = new System.Drawing.Point(0, 73);
             this.motorCtrlView1.MotorCtrl = null;
             this.motorCtrlView1.Name = "motorCtrlView1";
             this.motorCtrlView1.Size = new System.Drawing.Size(431, 258);
@@ -54,7 +54,7 @@
             // 
             // motorCtrlView2
             // 
-            this.motorCtrlView2.Location = new System.Drawing.Point(461, 63);
+            this.motorCtrlView2.Location = new System.Drawing.Point(428, 73);
             this.motorCtrlView2.MotorCtrl = null;
             this.motorCtrlView2.Name = "motorCtrlView2";
             this.motorCtrlView2.Size = new System.Drawing.Size(431, 258);
@@ -65,7 +65,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(959, 571);
+            this.ClientSize = new System.Drawing.Size(879, 349);
             this.Controls.Add(this.driveCtrlView);
             this.Controls.Add(this.motorCtrlView1);
             this.Controls.Add(this.motorCtrlView2);
