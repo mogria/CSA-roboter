@@ -21,6 +21,12 @@ namespace RobotCtrl
         #endregion
 
 
+        private const byte POWER_LEFT_MASK = 0x01;
+        private const byte POWER_RIGHT_MASK = 0x02;
+        private const byte POWER_BOTH_MASK = POWER_LEFT_MASK | POWER_RIGHT_MASK;
+        private const byte RESET_MASK = 0x80;
+
+
         #region constructor & destructor
         public DriveCtrl(int IOAddress)
         {
@@ -41,7 +47,7 @@ namespace RobotCtrl
         /// </summary>
         public bool Power
         {
-            set { DriveState = (value) ? DriveState | 0x03 : DriveState & ~0x03; }
+            set { DriveState = (value) ? DriveState | POWER_BOTH_MASK : DriveState & ~POWER_BOTH_MASK; }
         }
 
 
@@ -51,8 +57,11 @@ namespace RobotCtrl
         /// </summary>
         public bool PowerRight
         {
-            get { return false; } // ToDo
-            set { } // ToDo
+            get { return (DriveState & POWER_RIGHT_MASK) == POWER_RIGHT_MASK; }
+            set
+            {
+                IOPort.Write(ioAddress, value ? DriveState | POWER_RIGHT_MASK : DriveState & ~POWER_RIGHT_MASK);
+            }
         }
 
 
@@ -61,8 +70,11 @@ namespace RobotCtrl
         /// </summary>
         public bool PowerLeft
         {
-            get { return false; } // ToDo
-            set { } // ToDo
+            get { return (DriveState & POWER_LEFT_MASK) == POWER_LEFT_MASK; }
+            set
+            {
+                DriveState = value ? DriveState | POWER_LEFT_MASK : DriveState & ~POWER_LEFT_MASK;
+            }
         }
 
 
@@ -71,8 +83,8 @@ namespace RobotCtrl
         /// </summary>
         public int DriveState
         {
-            get { return 0; } // ToDo
-            set { } // ToDo
+            get { return IOPort.Read(ioAddress); } 
+            set { IOPort.Write(ioAddress, value); }
         }
         #endregion
 
@@ -84,7 +96,12 @@ namespace RobotCtrl
         /// </summary>
         public void Reset()
         {
-            // ToDo
+            DriveState &= ~RESET_MASK;
+            Thread.Sleep(5);
+            DriveState |= RESET_MASK;
+            Thread.Sleep(5);
+            DriveState &= ~RESET_MASK;
+            Thread.Sleep(5);
         }
         #endregion
 
