@@ -17,6 +17,9 @@ namespace RobotView
 {
     public partial class RadarView : UserControl
     {
+
+        public event EventHandler<EventArgs> Crash;
+
         #region constructor & destructor
         public RadarView()
         {
@@ -43,6 +46,14 @@ namespace RobotView
                 if (value > 255) value = 255;
                 if (value < 0) value = 0;
                 this.progressBar1.Value = value;
+
+                if(value < 20)
+                {
+                    if(Crash != null)
+                    {
+                        Crash(this, new EventArgs());
+                    }
+                }
             }
         }
         #endregion

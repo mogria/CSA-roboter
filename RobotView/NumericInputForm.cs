@@ -28,7 +28,6 @@ namespace RobotView
         public NumericInputForm()
         {
             InitializeComponent();
-            this.Visible = true;
             NumberEntered = 0;
 
         }
