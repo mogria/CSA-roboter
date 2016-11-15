@@ -12,11 +12,12 @@ namespace TestRadar
 {
     public partial class Form1 : Form
     {
+        Robot robot;
         public Form1()
         {
             InitializeComponent();
 
-            Robot robot = new Robot();
+            robot = new Robot();
             radarView1.Radar = robot.Radar;
             driveView1.Drive = robot.Drive;
             runArc1.Drive = robot.Drive;
@@ -24,6 +25,8 @@ namespace TestRadar
             runTurn1.Drive = robot.Drive;
 
             robot.Drive.Power = true;
+
+
 
             runArc1.Speed = commonRun1.Speed;
             runLine1.Speed = commonRun1.Speed;
@@ -34,7 +37,13 @@ namespace TestRadar
 
             commonRun1.AccelerationChanged += CommonRun1_AccelerationChanged;
             commonRun1.SpeedChanged += CommonRun1_SpeedChanged;
+            radarView1.Crash += RadarView1_Crash;
             
+        }
+
+        private void RadarView1_Crash(object sender, EventArgs e)
+        {
+            robot.Drive.Stop();
         }
 
         private void CommonRun1_SpeedChanged(object sender, EventArgs e)
@@ -42,6 +51,7 @@ namespace TestRadar
             runArc1.Speed = commonRun1.Speed;
             runLine1.Speed = commonRun1.Speed;
             runTurn1.Speed = commonRun1.Speed;
+            
         }
 
         private void CommonRun1_AccelerationChanged(object sender, EventArgs e)
