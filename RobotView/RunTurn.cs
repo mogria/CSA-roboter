@@ -15,6 +15,7 @@ namespace RobotView
         public RunTurn()
         {
             InitializeComponent();
+            numericInputAngle.Tag = upDownTurnAngle;
         }
         #endregion
 
@@ -42,6 +43,12 @@ namespace RobotView
         {
             buttonTurnStart_Click(null, EventArgs.Empty);
         }
+
+        private void ButtonNumericInput_Click(object sender, EventArgs args)
+        {
+            NumericInputForm.UpdateFromButton(sender);
+        }
+
         #endregion
     }
 }

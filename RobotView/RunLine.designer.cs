@@ -32,6 +32,7 @@ namespace RobotView
             this.upDownLineLength = new System.Windows.Forms.NumericUpDown();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
+            this.numericInputLength = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // buttonLineStart
@@ -45,7 +46,7 @@ namespace RobotView
             // 
             // buttonLineNeg
             // 
-            this.buttonLineNeg.Location = new System.Drawing.Point(174, 15);
+            this.buttonLineNeg.Location = new System.Drawing.Point(147, 15);
             this.buttonLineNeg.Name = "buttonLineNeg";
             this.buttonLineNeg.Size = new System.Drawing.Size(35, 24);
             this.buttonLineNeg.TabIndex = 19;
@@ -95,10 +96,20 @@ namespace RobotView
             this.label8.Size = new System.Drawing.Size(114, 20);
             this.label8.Text = "Length (+/- mm)";
             // 
+            // numericInputLength
+            // 
+            this.numericInputLength.Location = new System.Drawing.Point(188, 15);
+            this.numericInputLength.Name = "numericInputLength";
+            this.numericInputLength.Size = new System.Drawing.Size(21, 24);
+            this.numericInputLength.TabIndex = 23;
+            this.numericInputLength.Text = "#";
+            this.numericInputLength.Click += new System.EventHandler(this.ButtonNumericInput_Click);
+            // 
             // RunLine
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            this.Controls.Add(this.numericInputLength);
             this.Controls.Add(this.buttonLineStart);
             this.Controls.Add(this.buttonLineNeg);
             this.Controls.Add(this.upDownLineLength);
@@ -117,5 +128,6 @@ namespace RobotView
         private System.Windows.Forms.NumericUpDown upDownLineLength;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Button numericInputLength;
     }
 }

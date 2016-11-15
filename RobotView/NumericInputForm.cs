@@ -68,5 +68,23 @@ namespace RobotView
         {
             this.Close();
         }
+
+        public static void UpdateFromButton(object sender)
+        {
+            if (!(sender is Button)) return;
+
+            Button button = sender as Button;
+            if (!(button.Tag is TextBox)) return;
+
+            TextBox textBox = button.Tag as TextBox;
+
+            NumericInputForm form = new NumericInputForm();
+            form.NumberEntered = int.Parse(textBox.Text);
+
+            if (form.ShowDialog() == DialogResult.OK)
+            {
+                textBox.Text = form.NumberEntered + "";
+            }
+        }
     }
 }

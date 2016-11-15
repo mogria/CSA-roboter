@@ -15,6 +15,7 @@ namespace RobotView
         public RunLine()
         {
             InitializeComponent();
+            numericInputLength.Tag = upDownLineLength;
         }
         #endregion
 
@@ -50,6 +51,11 @@ namespace RobotView
             set { upDownLineLength.Value = (decimal)(value * 1000); }
         }
         #endregion
+
+        private void ButtonNumericInput_Click(object sender, EventArgs args)
+        {
+            NumericInputForm.UpdateFromButton(sender);
+        }
 
     }
 }

@@ -32,6 +32,7 @@ namespace RobotView
             this.upDownTurnAngle = new System.Windows.Forms.NumericUpDown();
             this.label6 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
+            this.numericInputAngle = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // buttonTurnStart
@@ -45,7 +46,7 @@ namespace RobotView
             // 
             // buttonTurnNeg
             // 
-            this.buttonTurnNeg.Location = new System.Drawing.Point(174, 14);
+            this.buttonTurnNeg.Location = new System.Drawing.Point(147, 14);
             this.buttonTurnNeg.Name = "buttonTurnNeg";
             this.buttonTurnNeg.Size = new System.Drawing.Size(35, 24);
             this.buttonTurnNeg.TabIndex = 22;
@@ -95,10 +96,20 @@ namespace RobotView
             this.label12.Size = new System.Drawing.Size(123, 20);
             this.label12.Text = "Angle (+/- degrees)";
             // 
+            // numericInputAngle
+            // 
+            this.numericInputAngle.Location = new System.Drawing.Point(188, 14);
+            this.numericInputAngle.Name = "numericInputAngle";
+            this.numericInputAngle.Size = new System.Drawing.Size(21, 24);
+            this.numericInputAngle.TabIndex = 26;
+            this.numericInputAngle.Text = "#";
+            this.numericInputAngle.Click += new System.EventHandler(this.ButtonNumericInput_Click);
+            // 
             // RunTurn
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            this.Controls.Add(this.numericInputAngle);
             this.Controls.Add(this.buttonTurnStart);
             this.Controls.Add(this.buttonTurnNeg);
             this.Controls.Add(this.upDownTurnAngle);
@@ -117,5 +128,6 @@ namespace RobotView
         private System.Windows.Forms.NumericUpDown upDownTurnAngle;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Button numericInputAngle;
     }
 }
