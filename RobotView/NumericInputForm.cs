@@ -74,17 +74,18 @@ namespace RobotView
         {
             if (!(sender is Button)) return;
 
+            
             Button button = sender as Button;
-            if (!(button.Tag is TextBox)) return;
+            if (!(button.Tag is Control)) return;
 
-            TextBox textBox = button.Tag as TextBox;
+            Control control = button.Tag as Control;
 
             NumericInputForm form = new NumericInputForm();
-            form.NumberEntered = int.Parse(textBox.Text);
+            form.NumberEntered = int.Parse(control.Text);
 
             if (form.ShowDialog() == DialogResult.OK)
             {
-                textBox.Text = form.NumberEntered + "";
+                control.Text = form.NumberEntered + "";
             }
         }
     }
