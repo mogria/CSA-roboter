@@ -74,6 +74,12 @@
       <DependentUpon>NumericInputForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RadarView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="RadarView.designer.cs">
+      <DependentUpon>RadarView.cs</DependentUpon>
+    </Compile>
     <Compile Include="Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -109,6 +115,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="NumericInputForm.resx">
       <DependentUpon>NumericInputForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RadarView.resx">
+      <DependentUpon>RadarView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
