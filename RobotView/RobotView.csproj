@@ -43,6 +43,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CommonRunParameters.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CommonRunParameters.designer.cs">
+      <DependentUpon>CommonRunParameters.cs</DependentUpon>
+    </Compile>
     <Compile Include="ConsoleView.cs">
       <SubType>usercontrol</SubType>
     </Compile>
@@ -54,6 +60,12 @@
     </Compile>
     <Compile Include="DriveCtrlView.designer.cs">
       <DependentUpon>DriveCtrlView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DriveView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DriveView.designer.cs">
+      <DependentUpon>DriveView.cs</DependentUpon>
     </Compile>
     <Compile Include="LEDView.cs">
       <SubType>UserControl</SubType>
@@ -86,24 +98,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
-    <Compile Include="RunArc.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="RunArc.designer.cs">
-      <DependentUpon>RunArc.cs</DependentUpon>
-    </Compile>
-    <Compile Include="RunLine.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="RunLine.designer.cs">
-      <DependentUpon>RunLine.cs</DependentUpon>
-    </Compile>
-    <Compile Include="RunTurn.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="RunTurn.designer.cs">
-      <DependentUpon>RunTurn.cs</DependentUpon>
-    </Compile>
     <Compile Include="SwitchView.cs">
       <SubType>usercontrol</SubType>
     </Compile>
@@ -119,11 +113,17 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="CommonRunParameters.resx">
+      <DependentUpon>CommonRunParameters.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ConsoleView.resx">
       <DependentUpon>ConsoleView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DriveCtrlView.resx">
       <DependentUpon>DriveCtrlView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DriveView.resx">
+      <DependentUpon>DriveView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LEDView.resx">
       <DependentUpon>LEDView.cs</DependentUpon>
@@ -141,15 +141,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="RunArc.resx">
-      <DependentUpon>RunArc.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="RunLine.resx">
-      <DependentUpon>RunLine.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="RunTurn.resx">
-      <DependentUpon>RunTurn.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SwitchView.resx">
       <DependentUpon>SwitchView.cs</DependentUpon>
