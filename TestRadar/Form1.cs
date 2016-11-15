@@ -22,8 +22,33 @@ namespace TestRadar
             runArc1.Drive = robot.Drive;
             runLine1.Drive = robot.Drive;
             runTurn1.Drive = robot.Drive;
+
             robot.Drive.Power = true;
+
+            runArc1.Speed = commonRun1.Speed;
+            runLine1.Speed = commonRun1.Speed;
+            runTurn1.Speed = commonRun1.Speed;
+            runArc1.Acceleration = commonRun1.Acceleration;
+            runLine1.Acceleration = commonRun1.Acceleration;
+            runTurn1.Acceleration = commonRun1.Acceleration;
+
+            commonRun1.AccelerationChanged += CommonRun1_AccelerationChanged;
+            commonRun1.SpeedChanged += CommonRun1_SpeedChanged;
             
+        }
+
+        private void CommonRun1_SpeedChanged(object sender, EventArgs e)
+        {
+            runArc1.Speed = commonRun1.Speed;
+            runLine1.Speed = commonRun1.Speed;
+            runTurn1.Speed = commonRun1.Speed;
+        }
+
+        private void CommonRun1_AccelerationChanged(object sender, EventArgs e)
+        {
+            runArc1.Acceleration = commonRun1.Acceleration;
+            runLine1.Acceleration = commonRun1.Acceleration;
+            runTurn1.Acceleration = commonRun1.Acceleration;
         }
 
         private void Form1_Load(object sender, EventArgs e)

@@ -33,6 +33,7 @@ namespace TestRadar
         {
             this.radarView1 = new RobotView.RadarView();
             this.driveView1 = new RobotView.DriveView();
+            this.commonRun1 = new RobotView.CommonRunParameters();
             this.runArc1 = new RobotView.RunArc();
             this.runTurn1 = new RobotView.RunTurn();
             this.runLine1 = new RobotView.RunLine();
@@ -49,16 +50,25 @@ namespace TestRadar
             // driveView1
             // 
             this.driveView1.Drive = null;
-            this.driveView1.Location = new System.Drawing.Point(3, 3);
+            this.driveView1.Location = new System.Drawing.Point(3, 7);
             this.driveView1.Name = "driveView1";
             this.driveView1.Size = new System.Drawing.Size(292, 289);
             this.driveView1.TabIndex = 1;
+            // 
+            // commonRun1
+            // 
+            this.commonRun1.Acceleration = 0.3F;
+            this.commonRun1.Location = new System.Drawing.Point(359, 7);
+            this.commonRun1.Name = "commonRun1";
+            this.commonRun1.Size = new System.Drawing.Size(301, 84);
+            this.commonRun1.Speed = 0.5F;
+            this.commonRun1.TabIndex = 2;
             // 
             // runArc1
             // 
             this.runArc1.Acceleration = 0F;
             this.runArc1.Drive = null;
-            this.runArc1.Location = new System.Drawing.Point(361, 121);
+            this.runArc1.Location = new System.Drawing.Point(361, 232);
             this.runArc1.Name = "runArc1";
             this.runArc1.Size = new System.Drawing.Size(351, 90);
             this.runArc1.Speed = 0F;
@@ -68,7 +78,7 @@ namespace TestRadar
             // 
             this.runTurn1.Acceleration = 0F;
             this.runTurn1.Drive = null;
-            this.runTurn1.Location = new System.Drawing.Point(361, 70);
+            this.runTurn1.Location = new System.Drawing.Point(359, 165);
             this.runTurn1.Name = "runTurn1";
             this.runTurn1.Size = new System.Drawing.Size(353, 45);
             this.runTurn1.Speed = 0F;
@@ -79,7 +89,7 @@ namespace TestRadar
             this.runLine1.Acceleration = 0F;
             this.runLine1.Drive = null;
             this.runLine1.Length = 1F;
-            this.runLine1.Location = new System.Drawing.Point(363, 18);
+            this.runLine1.Location = new System.Drawing.Point(361, 97);
             this.runLine1.Name = "runLine1";
             this.runLine1.Size = new System.Drawing.Size(351, 46);
             this.runLine1.Speed = 0F;
@@ -93,6 +103,7 @@ namespace TestRadar
             this.ClientSize = new System.Drawing.Size(754, 373);
             this.Controls.Add(this.radarView1);
             this.Controls.Add(this.driveView1);
+            this.Controls.Add(this.commonRun1);
             this.Controls.Add(this.runArc1);
             this.Controls.Add(this.runLine1);
             this.Controls.Add(this.runTurn1);
@@ -107,6 +118,7 @@ namespace TestRadar
 
         private RadarView radarView1;
         private DriveView driveView1;
+        private CommonRunParameters commonRun1;
         private RunArc runArc1;
         private RunLine runLine1;
         private RunTurn runTurn1;
