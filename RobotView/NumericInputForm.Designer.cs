@@ -6,7 +6,6 @@
         /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
-        private System.Windows.Forms.MainMenu mainMenu1;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -29,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.mainMenu1 = new System.Windows.Forms.MainMenu();
             this.buttonNumber9 = new System.Windows.Forms.Button();
             this.numberDisplay = new System.Windows.Forms.TextBox();
             this.button8 = new System.Windows.Forms.Button();
@@ -214,7 +212,6 @@
             this.Controls.Add(this.button8);
             this.Controls.Add(this.numberDisplay);
             this.Controls.Add(this.buttonNumber9);
-            this.Menu = this.mainMenu1;
             this.Name = "NumericInputForm";
             this.Text = "NumericInputForm";
             this.ResumeLayout(false);
