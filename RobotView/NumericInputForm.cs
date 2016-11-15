@@ -13,33 +13,62 @@ namespace RobotView
     public partial class NumericInputForm : Form
     {
 
+        private int numberEntered;
 
-
-        private int number;
-
-        public int Number
+        public int NumberEntered
         {
-            get { return number; }
+            get { return numberEntered; }
             set
             {
-                number = value;
-                numberDisplay.Text = number.ToString();
+                numberDisplay.Text = value + "";
+                numberEntered = value;
             }
         }
 
-   
         public NumericInputForm()
         {
             InitializeComponent();
+            NumberEntered = 0;
+
         }
 
         private void buttonNumber_Click(object sender, EventArgs e)
         {
-            if(sender is Button)
+            if (sender is Button)
             {
                 Button numberButton = sender as Button;
-                Number = Number * 10 + int.Parse(numberButton.Text);
+                int number = 0;
+                if (int.TryParse(numberButton.Text, out number))
+                {
+                    NumberEntered *= 10;
+                    NumberEntered += number;
+                }
             }
+        }
+
+        private void buttonPlusMinus_Click(object sender, EventArgs e)
+        {
+            NumberEntered *= -1;
+        }
+
+        private void buttonBack_Click(object sender, EventArgs e)
+        {
+            NumberEntered /= 10;
+        }
+
+        private void buttonClear_Click(object sender, EventArgs e)
+        {
+            NumberEntered = 0;
+        }
+
+        private void buttonCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void buttonOk_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
