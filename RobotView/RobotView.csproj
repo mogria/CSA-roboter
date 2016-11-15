@@ -86,6 +86,24 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
+    <Compile Include="RunArc.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="RunArc.designer.cs">
+      <DependentUpon>RunArc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RunLine.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="RunLine.designer.cs">
+      <DependentUpon>RunLine.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RunTurn.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="RunTurn.designer.cs">
+      <DependentUpon>RunTurn.cs</DependentUpon>
+    </Compile>
     <Compile Include="SwitchView.cs">
       <SubType>usercontrol</SubType>
     </Compile>
@@ -123,6 +141,15 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RunArc.resx">
+      <DependentUpon>RunArc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RunLine.resx">
+      <DependentUpon>RunLine.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RunTurn.resx">
+      <DependentUpon>RunTurn.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SwitchView.resx">
       <DependentUpon>SwitchView.cs</DependentUpon>
