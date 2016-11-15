@@ -15,6 +15,8 @@ namespace RobotView
         public RunArc()
         {
             InitializeComponent();
+            numericInputRadius.Tag = upDownArcRadius;
+            numericInputAngle.Tag = upDownArcAngle;
         }
         #endregion
 
@@ -53,6 +55,24 @@ namespace RobotView
         public void Start()
         {
             buttonStartArc_Click(null, EventArgs.Empty);
+        }
+
+        private void ButtonNumericInput_Click(object sender, EventArgs args)
+        {
+            if (!(sender is Button)) return;
+
+            Button button = sender as Button;
+            if (!(button.Tag is TextBox)) return;
+
+            TextBox textBox = button.Tag as TextBox;
+
+            NumericInputForm form = new NumericInputForm();
+            form.NumberEntered = int.Parse(textBox.Text);
+
+            if(form.ShowDialog() == DialogResult.OK)
+            {
+                textBox.Text = form.NumberEntered + "";
+            }
         }
         #endregion
     }

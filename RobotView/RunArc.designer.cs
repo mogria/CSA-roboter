@@ -36,11 +36,13 @@ namespace RobotView
             this.label5 = new System.Windows.Forms.Label();
             this.upDownArcRadius = new System.Windows.Forms.NumericUpDown();
             this.buttonStartArc = new System.Windows.Forms.Button();
+            this.numericInputRadius = new System.Windows.Forms.Button();
+            this.numericInputAngle = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // buttonArcNeg
             // 
-            this.buttonArcNeg.Location = new System.Drawing.Point(174, 62);
+            this.buttonArcNeg.Location = new System.Drawing.Point(140, 60);
             this.buttonArcNeg.Name = "buttonArcNeg";
             this.buttonArcNeg.Size = new System.Drawing.Size(35, 24);
             this.buttonArcNeg.TabIndex = 24;
@@ -147,10 +149,30 @@ namespace RobotView
             this.buttonStartArc.Text = "Start";
             this.buttonStartArc.Click += new System.EventHandler(this.buttonStartArc_Click);
             // 
+            // numericInputRadius
+            // 
+            this.numericInputRadius.Location = new System.Drawing.Point(181, 30);
+            this.numericInputRadius.Name = "numericInputRadius";
+            this.numericInputRadius.Size = new System.Drawing.Size(28, 24);
+            this.numericInputRadius.TabIndex = 32;
+            this.numericInputRadius.Text = "#";
+            this.numericInputRadius.Click += new System.EventHandler(this.ButtonNumericInput_Click);
+            // 
+            // numericInputAngle
+            // 
+            this.numericInputAngle.Location = new System.Drawing.Point(181, 60);
+            this.numericInputAngle.Name = "numericInputAngle";
+            this.numericInputAngle.Size = new System.Drawing.Size(28, 24);
+            this.numericInputAngle.TabIndex = 33;
+            this.numericInputAngle.Text = "#";
+            this.numericInputAngle.Click += new System.EventHandler(this.ButtonNumericInput_Click);
+            // 
             // RunArc
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            this.Controls.Add(this.numericInputAngle);
+            this.Controls.Add(this.numericInputRadius);
             this.Controls.Add(this.buttonArcNeg);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label2);
@@ -177,5 +199,7 @@ namespace RobotView
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.NumericUpDown upDownArcRadius;
         private System.Windows.Forms.Button buttonStartArc;
+        private System.Windows.Forms.Button numericInputRadius;
+        private System.Windows.Forms.Button numericInputAngle;
     }
 }
