@@ -37,12 +37,10 @@ namespace RobotView
             if (sender is Button)
             {
                 Button numberButton = sender as Button;
-                int number = 0;
-                if (int.TryParse(numberButton.Text, out number))
-                {
-                    NumberEntered *= 10;
-                    NumberEntered += number;
-                }
+                int number = int.Parse(numberButton.Text);
+
+                NumberEntered *= 10;
+                NumberEntered += number;
             }
         }
 
