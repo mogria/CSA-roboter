@@ -4,19 +4,19 @@ using System.Linq;
 using System.Text;
 using RobotCtrl;
 
-namespace HttpCommander.CommandInterpreter
+namespace HttpCommander
 {
-    class TrackArcRightCommand : RobotCommand
+    class TrackArcRightCommand : AbstractRobotCommand
     {
         private float radiusLength;
         private float arcAngle;
 
-        public string GetCommandName()
+        public override string GetCommandName()
         {
             return "TrackArcRight";
         }
 
-        public void ParseCommand(List<string> commandParameters)
+        public override void ParseCommand(List<string> commandParameters)
         {
             if (commandParameters.Count != 2)
             {
@@ -26,7 +26,7 @@ namespace HttpCommander.CommandInterpreter
             radiusLength = float.Parse(commandParameters[1]);
         }
 
-        public void RunCommand(Robot robot)
+        public override void RunCommand(Robot robot)
         {
             robot.Drive.RunArcRight(radiusLength, arcAngle, 0.5f, 0.3f);
         }

@@ -4,18 +4,18 @@ using System.Linq;
 using System.Text;
 using RobotCtrl;
 
-namespace HttpCommander.CommandInterpreter
+namespace HttpCommander
 {
-    class TrackLineCommand : RobotCommand
+    class TrackLineCommand : AbstractRobotCommand
     {
 
         private float trackLineLength = 0;
-        public string GetCommandName()
+        public override string GetCommandName()
         {
             return "TrackLine";
         }
 
-        public void ParseCommand(List<string> commandParameters)
+        public override void ParseCommand(List<string> commandParameters)
         {
             if(commandParameters.Count != 1)
             {
@@ -25,7 +25,7 @@ namespace HttpCommander.CommandInterpreter
             trackLineLength = float.Parse(commandParameters[0]);
         }
 
-        public void RunCommand(Robot robot)
+        public override void RunCommand(Robot robot)
         {
             robot.Drive.RunLine(trackLineLength, 0.5f, 0.3f);
         }

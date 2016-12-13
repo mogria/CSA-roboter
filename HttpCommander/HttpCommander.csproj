@@ -42,7 +42,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CommandInterpreter\StartCommand.cs" />
+    <Compile Include="CommandInterpreter\AbstractRobotCommand.cs" />
+    <Compile Include="CommandInterpreter\CommandInterpreter.cs" />
     <Compile Include="CommandInterpreter\TrackTurnRightCommand.cs" />
     <Compile Include="CommandInterpreter\TrackArcLeftCommand.cs" />
     <Compile Include="CommandInterpreter\TrackArcRightCommand.cs" />
@@ -52,7 +53,6 @@
     <Compile Include="WebServer\HttpServer.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="CommandInterpreter\RobotCommand.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

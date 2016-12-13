@@ -4,18 +4,18 @@ using System.Linq;
 using System.Text;
 using RobotCtrl;
 
-namespace HttpCommander.CommandInterpreter
+namespace HttpCommander
 {
-    class TrackTurnRightCommand : RobotCommand
+    class TrackTurnRightCommand : AbstractRobotCommand
     {
         private float arcAngle;
 
-        public string GetCommandName()
+        public override string GetCommandName()
         {
             return "TrackTurnRight";
         }
 
-        public void ParseCommand(List<string> commandParameters)
+        public override void ParseCommand(List<string> commandParameters)
         {
             if (commandParameters.Count != 1)
             {
@@ -24,7 +24,7 @@ namespace HttpCommander.CommandInterpreter
             arcAngle = (float)int.Parse(commandParameters[0]);
         }
 
-        public void RunCommand(Robot robot)
+        public override void RunCommand(Robot robot)
         {
             robot.Drive.RunTurn(arcAngle, 0.5f, 0.3f);
         }

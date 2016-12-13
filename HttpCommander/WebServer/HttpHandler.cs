@@ -11,18 +11,12 @@ namespace HttpCommander
     class HttpHandler
     {
         TcpClient client;
-
-        public static string WebrootDirectory
-        {
-            get
-            {
-                string path = System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase;
-                return Path.GetDirectoryName(path) + "/webroot";
-            }
-        }
+        CommandInterpreter interpreter;
+        string webroot;
 
 
-        public HttpHandler(TcpClient client)
+
+        public HttpHandler(TcpClient client, CommandInterpreter interpreter, string webroot)
         {
             this.client = client;
         }
@@ -57,7 +51,15 @@ namespace HttpCommander
                     readHeaders(tcpReader);
                     if(httpFirstLine[1] == "/")
                     {
-                        // @todo send stream further to interpreter
+                        bool result = interpreter.ReadCommands(tcpReader);
+                        if(result)
+                        {
+                            writeResponse(tcpWriter, 200);
+                        }
+                        else
+                        {
+                            writeResponse(tcpWriter, 500);
+                        }
                     }
                     else
                     {
@@ -82,12 +84,12 @@ namespace HttpCommander
 
         private void serveFromFileSystem(StreamWriter writer, String fileToServe)
         {
-            string file = WebrootDirectory + fileToServe;
+            string file = webroot + fileToServe;
 
 
             if(File.Exists(file))
             {
-                using (var reader = new StreamReader(File.OpenRead(WebrootDirectory + fileToServe)))
+                using (var reader = new StreamReader(File.OpenRead(webroot + fileToServe)))
                 {
                     writeResponse(writer, 200, reader.ReadToEnd());
                 }
@@ -105,7 +107,8 @@ namespace HttpCommander
             {
                 {200, "OK"},
                 {400, "Bad Request"},
-                {404, "Not Found"}
+                {404, "Not Found"},
+                {500, "Internal Server Error"}
             };
             if(contents == null)
             {
