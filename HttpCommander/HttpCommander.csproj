@@ -49,9 +49,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="CommandInterpreter\RobotCommand.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="webroot\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\RobotCtrl\RobotCtrl.csproj">
       <Project>{8839E9DD-8FF5-41AF-820A-FCF120AD79C5}</Project>
@@ -61,6 +59,11 @@
       <Project>{6F9F0048-8A3A-49BF-BE64-DF0CE1ECAE09}</Project>
       <Name>RobotIO</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="webroot\index.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\v8.0\Microsoft.$(TargetFrameworkIdentifier).CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

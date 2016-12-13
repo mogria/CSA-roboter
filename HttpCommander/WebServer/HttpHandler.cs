@@ -64,7 +64,6 @@ namespace HttpCommander
                     if(httpFirstLine[1] == "/")
                     {
                         // @todo send stream further to interpreter
-
                     }
                     else
                     {
