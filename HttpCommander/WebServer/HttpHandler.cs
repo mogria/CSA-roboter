@@ -25,12 +25,6 @@ namespace HttpCommander
         public HttpHandler(TcpClient client)
         {
             this.client = client;
-            //get the full location of the assembly with DaoTests in it
-            AppDomain.CurrentDomain.B
-            string fullPath = typeof(HttpCommander).Assembly.GetD
-
-            //get the folder that's in
-            string theDirectory = Path.GetDirectoryName(fullPath);
         }
 
         internal void HandleRequest()
