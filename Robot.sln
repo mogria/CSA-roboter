@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NumericInput", "NumericInpu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestRadar", "TestRadar\TestRadar.csproj", "{6F09834D-4479-41C7-8A65-D7E26A950256}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HttpCommander", "HttpCommander\HttpCommander.csproj", "{F6FA41BD-DD75-4A29-8BFB-E25E839C6CFD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -63,6 +65,12 @@ Global
 		{6F09834D-4479-41C7-8A65-D7E26A950256}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6F09834D-4479-41C7-8A65-D7E26A950256}.Release|Any CPU.Build.0 = Release|Any CPU
 		{6F09834D-4479-41C7-8A65-D7E26A950256}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{F6FA41BD-DD75-4A29-8BFB-E25E839C6CFD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F6FA41BD-DD75-4A29-8BFB-E25E839C6CFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F6FA41BD-DD75-4A29-8BFB-E25E839C6CFD}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{F6FA41BD-DD75-4A29-8BFB-E25E839C6CFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F6FA41BD-DD75-4A29-8BFB-E25E839C6CFD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F6FA41BD-DD75-4A29-8BFB-E25E839C6CFD}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
