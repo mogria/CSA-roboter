@@ -6,28 +6,27 @@ using RobotCtrl;
 
 namespace HttpCommander.CommandInterpreter
 {
-    class TrackLineCommand : RobotCommand
+    class TrackTurnRightCommand : RobotCommand
     {
+        private float arcAngle;
 
-        private int trackLineLength = 0;
         public string GetCommandName()
         {
-            return "TrackLine";
+            return "TrackTurnRight";
         }
 
         public void ParseCommand(List<string> commandParameters)
         {
-            if(commandParameters.Count != 1)
+            if (commandParameters.Count != 1)
             {
-                throw new ArgumentException("TrackLineCommand requires one argument");
+                throw new ArgumentException("TrackTurnRight requires one argument");
             }
-
-            trackLineLength = int.Parse(commandParameters[0]);
+            arcAngle = (float)int.Parse(commandParameters[0]);
         }
 
         public void RunCommand(Robot robot)
         {
-            robot.Drive.RunLine(trackLineLength, 0.5f, 0.3f);
+            robot.Drive.RunTurn(arcAngle, 0.5f, 0.3f);
         }
     }
 }
