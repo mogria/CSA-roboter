@@ -19,6 +19,7 @@ namespace HttpCommander
         public HttpHandler(TcpClient client, CommandInterpreter interpreter, string webroot)
         {
             this.client = client;
+            this.webroot = webroot;
         }
 
         internal void HandleRequest()
