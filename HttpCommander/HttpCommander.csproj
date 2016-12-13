@@ -42,7 +42,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CommandInterpreter\Class1.cs" />
+    <Compile Include="CommandInterpreter\StartCommand.cs" />
+    <Compile Include="CommandInterpreter\TrackTurnRightCommand.cs" />
+    <Compile Include="CommandInterpreter\TrackArcLeftCommand.cs" />
+    <Compile Include="CommandInterpreter\TrackArcRightCommand.cs" />
+    <Compile Include="CommandInterpreter\TrackLineCommand.cs" />
+    <Compile Include="CommandInterpreter\TrackTurnLeftCommand.cs" />
     <Compile Include="WebServer\HttpHandler.cs" />
     <Compile Include="WebServer\HttpServer.cs" />
     <Compile Include="Program.cs" />

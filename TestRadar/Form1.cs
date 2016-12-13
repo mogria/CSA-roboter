@@ -43,7 +43,7 @@ namespace TestRadar
 
         private void RadarView1_Crash(object sender, EventArgs e)
         {
-            robot.Drive.Stop();
+            robot.Drive.Halt();
         }
 
         private void CommonRun1_SpeedChanged(object sender, EventArgs e)
