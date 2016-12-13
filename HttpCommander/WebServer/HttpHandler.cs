@@ -18,6 +18,7 @@ namespace HttpCommander
 
         public HttpHandler(TcpClient client, CommandInterpreter interpreter, string webroot)
         {
+            this.interpreter = interpreter;
             this.client = client;
             this.webroot = webroot;
         }

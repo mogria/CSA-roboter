@@ -29,6 +29,7 @@ namespace HttpCommander
 
         public bool ReadCommands(StreamReader reader)
         {
+            commandsToExecute.Clear();
             String line;
             while(!reader.EndOfStream)
             {
@@ -59,7 +60,7 @@ namespace HttpCommander
                         robot.Drive.Power = true;
                         RunCommands();
                         robot.Drive.Halt();
-                        robot.Drive.Power = false;
+                        //robot.Drive.Power = false;
                     }
                     else
                     {

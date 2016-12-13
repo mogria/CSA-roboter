@@ -169,7 +169,6 @@ namespace RobotCtrl
         {
             get
             {
-                // throw new NotImplementedException("ToDo");
                 int ticks = Ticks;                              // Gets the momentary amount of ticks
                 return (float)(CIRCUMFERENCE / MAXTICK) * ticks;      // Calculates ticks into Distance (m)
             }
