@@ -15,7 +15,6 @@ namespace HttpCommander
         List<Type> commandClasses = new List<Type>();
 
         List<AbstractRobotCommand> commandsToExecute = new List<AbstractRobotCommand>();
-        Mutex interpreterLock = new Mutex(false, "HttpCommanderInterpreterLock");
 
         public CommandInterpreter(Robot robot, string outputLog)
         {
@@ -31,9 +30,8 @@ namespace HttpCommander
 
         public bool ReadCommands(StreamReader reader)
         {
-            try
+            lock(this)
             {
-                interpreterLock.WaitOne();
                 commandsToExecute.Clear();
                 String line;
                 while (!reader.EndOfStream)
@@ -77,9 +75,6 @@ namespace HttpCommander
                     }
                 }
                 return true;
-            } finally
-            {
-                interpreterLock.ReleaseMutex();
             }
         }
 
