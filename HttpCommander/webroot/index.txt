@@ -1,1 +1,3 @@
 ﻿Hello :-)
+
+View the /log.txt file to see commands run
