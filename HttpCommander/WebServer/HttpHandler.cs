@@ -18,13 +18,13 @@ namespace HttpCommander
 
         public HttpHandler(TcpClient client, CommandInterpreter interpreter, string webroot)
         {
-            this.interpreter = interpreter;
             this.client = client;
             this.webroot = webroot;
         }
 
         internal void HandleRequest()
         {
+            using (TcpClient client = this.client)
             using (StreamReader tcpReader = new StreamReader(client.GetStream()))
             using (StreamWriter tcpWriter = new StreamWriter(client.GetStream()))
             {
@@ -75,8 +75,6 @@ namespace HttpCommander
                 }
 
             }
-
-            
         }
 
         private void readHeaders(StreamReader reader)
@@ -120,9 +118,10 @@ namespace HttpCommander
             writer.WriteLine("HTTP/1.0 " + status + " " + statusTable[status]);
             writer.WriteLine("Content-Type: text/plain");
             writer.WriteLine("Content-Length: " + contents.Length);
-            writer.WriteLine("Connection: close"); 
+            writer.WriteLine("Connection: close");
             writer.WriteLine("");
             writer.WriteLine(contents);
+            writer.WriteLine("");
         } 
     }
 }
