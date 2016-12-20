@@ -91,7 +91,8 @@ namespace HttpCommander
 
             if(File.Exists(file))
             {
-                using (var reader = new StreamReader(File.OpenRead(webroot + fileToServe)))
+                using (FileStream fs = new FileStream(webroot + fileToServe, FileMode.Append, FileAccess.Read, FileShare.None))
+                using (var reader = new StreamReader(fs))
                 {
                     writeResponse(writer, 200, reader.ReadToEnd());
                 }
