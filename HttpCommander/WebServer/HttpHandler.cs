@@ -20,6 +20,7 @@ namespace HttpCommander
         {
             this.client = client;
             this.webroot = webroot;
+            this.interpreter = interpreter;
         }
 
         internal void HandleRequest()
