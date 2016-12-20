@@ -22,6 +22,7 @@ namespace HttpCommander
                 throw new ArgumentException("TrackTurnRight requires one argument");
             }
             arcAngle = (float)int.Parse(commandParameters[0]);
+            arcAngle = arcAngle * (-1);
         }
 
         public override void RunCommand(Robot robot)

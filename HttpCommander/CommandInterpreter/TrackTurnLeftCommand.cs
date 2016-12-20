@@ -22,7 +22,7 @@ namespace HttpCommander
                 throw new ArgumentException("TrackTurnLeft requires one argument");
             }
             arcAngle = (float) int.Parse(commandParameters[0]);
-            arcAngle = arcAngle * (-1);                         // invert for left turn
+            //arcAngle = arcAngle * (-1);                         // invert for left turn
 
         }
 

@@ -23,6 +23,7 @@ namespace HttpCommander
                 throw new ArgumentException("TrackArcRight requires two arguments");
             }
             arcAngle = (float)int.Parse(commandParameters[0]);
+            //arcAngle = arcAngle * (-1);
             radiusLength = float.Parse(commandParameters[1]);
         }
 
