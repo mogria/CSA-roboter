@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 
 namespace HttpCommander
 {
@@ -81,6 +82,10 @@ namespace HttpCommander
                     streamWriter.WriteLine(command.GetFullCommandString());
                     System.Console.WriteLine("Running " + command.GetCommandName());
                     command.RunCommand(robot);
+                    while (!robot.Drive.Done)
+                    {
+                        Thread.Sleep(20);
+                    }
                 }
             }
         }
