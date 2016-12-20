@@ -76,6 +76,7 @@ namespace HttpCommander
                 }
 
             }
+            client.Close();
         }
 
         private void readHeaders(StreamReader reader)
@@ -123,6 +124,7 @@ namespace HttpCommander
             writer.WriteLine("");
             writer.WriteLine(contents);
             writer.WriteLine("");
+            writer.Flush();
         } 
     }
 }
