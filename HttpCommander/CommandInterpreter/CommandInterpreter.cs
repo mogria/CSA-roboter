@@ -15,6 +15,7 @@ namespace HttpCommander
         List<Type> commandClasses = new List<Type>();
 
         List<AbstractRobotCommand> commandsToExecute = new List<AbstractRobotCommand>();
+        Mutex interpreterLock = new Mutex(false, "HttpCommanderInterpreterLock");
 
         public CommandInterpreter(Robot robot, string outputLog)
         {
@@ -30,63 +31,78 @@ namespace HttpCommander
 
         public bool ReadCommands(StreamReader reader)
         {
-            commandsToExecute.Clear();
-            String line;
-            while(!reader.EndOfStream)
+            try
             {
-                line = reader.ReadLine();
-                string[] arguments = line.Split(' ');
-                if (arguments.Length <= 0) continue;
-
-                string command = arguments[0];
-                List<String> parameters = arguments.Skip(1).ToList();
-
-                bool found = false;
-                foreach (Type commandClass in commandClasses)
+                interpreterLock.WaitOne();
+                commandsToExecute.Clear();
+                String line;
+                while (!reader.EndOfStream)
                 {
-                    AbstractRobotCommand robotCommand = Activator.CreateInstance(commandClass) as AbstractRobotCommand;
-                    if(robotCommand.GetCommandName() == command)
+                    line = reader.ReadLine();
+                    string[] arguments = line.Split(' ');
+                    if (arguments.Length <= 0) continue;
+
+                    string command = arguments[0];
+                    if (command == "") continue;
+
+                    List<String> parameters = arguments.Skip(1).ToList();
+
+                    bool found = false;
+                    foreach (Type commandClass in commandClasses)
                     {
-                        robotCommand.SetFullCommandString(line);
-                        robotCommand.ParseCommand(parameters);
-                        commandsToExecute.Add(robotCommand);
-                        found = true;
+                        AbstractRobotCommand robotCommand = Activator.CreateInstance(commandClass) as AbstractRobotCommand;
+                        if (robotCommand.GetCommandName() == command)
+                        {
+                            robotCommand.SetFullCommandString(line);
+                            robotCommand.ParseCommand(parameters);
+                            commandsToExecute.Add(robotCommand);
+                            found = true;
+                        }
+                    }
+
+                    if (!found)
+                    {
+                        if (command == "Start")
+                        {
+                            robot.Drive.Power = true;
+                            RunCommands();
+                            robot.Drive.Halt();
+                            //robot.Drive.Power = false;
+                            LogCommand("Start", robot.Drive.DriveInfo);
+                        }
+                        else
+                        {
+                            return false;
+                        }
                     }
                 }
-
-                if(!found)
-                {
-                    if(command == "Start")
-                    {
-                        robot.Drive.Power = true;
-                        RunCommands();
-                        robot.Drive.Halt();
-                        //robot.Drive.Power = false;
-                    }
-                    else
-                    {
-                        return false;
-                    }
-                }
+                return true;
+            } finally
+            {
+                interpreterLock.ReleaseMutex();
             }
-            return true;
         }
 
         public void RunCommands()
         {
             foreach(AbstractRobotCommand command in commandsToExecute)
             {
-                using (FileStream fs = new FileStream(outputLog, FileMode.Append, FileAccess.Write))
-                using(StreamWriter streamWriter = new StreamWriter(fs))
+                System.Console.WriteLine("Running " + command.GetCommandName());
+                command.RunCommand(robot);
+                while (!robot.Drive.Done)
                 {
-                    streamWriter.WriteLine(command.GetFullCommandString());
-                    System.Console.WriteLine("Running " + command.GetCommandName());
-                    command.RunCommand(robot);
-                    while (!robot.Drive.Done)
-                    {
-                        Thread.Sleep(20);
-                    }
+                    Thread.Sleep(20);
                 }
+                LogCommand(command.GetFullCommandString(), robot.Drive.DriveInfo);
+            }
+        }
+
+        public void LogCommand(string commandString, DriveInfo driveInfo)
+        {
+            using (FileStream fs = new FileStream(outputLog, FileMode.Append, FileAccess.Write, FileShare.None))
+            using (StreamWriter streamWriter = new StreamWriter(fs))
+            {
+                streamWriter.WriteLine(DateTime.Now + ": " + commandString + "(Distance Left  = " + driveInfo.DistanceL + ", Distance Right = " + driveInfo.DistanceR + ")");
             }
         }
 
